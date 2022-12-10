@@ -1,0 +1,213 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "UTURN Price Calculator FE Assignment",
+    "description": "This is the api documentation for UTURNs Price Calculator Frontend Developer Assignment",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "m.vandelaar@uturn-now.com"
+    },
+    "version": "1.0.0"
+  },
+  "externalDocs": {
+    "description": "Go to the assignment",
+    "url": "http://uturn-now.com"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:9099"
+    }
+  ],
+  "paths": {
+    "/": {
+      "post": {
+        "summary": "Price request",
+        "description": "Request the price indication for a shipment.",
+        "requestBody": {
+          "description": "Create a new price request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "size",
+                  "type",
+                  "locations"
+                ],
+                "properties": {
+                  "size": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "locations": {
+                    "type": "object",
+                    "required": [
+                      "start",
+                      "delivery",
+                      "end"
+                    ],
+                    "properties": {
+                      "start": {
+                        "type": "string"
+                      },
+                      "delivery": {
+                        "type": "string"
+                      },
+                      "end": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "min",
+                    "max",
+                    "average",
+                    "data"
+                  ],
+                  "properties": {
+                    "min": {
+                      "type": "number"
+                    },
+                    "max": {
+                      "type": "number"
+                    },
+                    "average": {
+                      "type": "number"
+                    },
+                    "data": {
+                      "description": "Data contains 13 numbers and is ordered by month. The first item in the array represents the current month, while the last item represents the current month a year later.",
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/container-sizes": {
+      "get": {
+        "summary": "Container sizes",
+        "description": "Get a list of supported container sizes",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/shipment-types": {
+      "get": {
+        "summary": "Shipment types",
+        "description": "Get a list of supported shipment types",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PriceIndication": {
+        "required": [
+          "min",
+          "max",
+          "average",
+          "data"
+        ],
+        "properties": {
+          "min": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          },
+          "average": {
+            "type": "number"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "PriceRequest": {
+        "required": [
+          "size",
+          "type",
+          "locations"
+        ],
+        "properties": {
+          "size": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "locations": {
+            "type": "object",
+            "required": [
+              "start",
+              "delivery",
+              "end"
+            ],
+            "properties": {
+              "start": {
+                "type": "string"
+              },
+              "delivery": {
+                "type": "string"
+              },
+              "end": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
