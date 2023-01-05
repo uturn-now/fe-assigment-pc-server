@@ -11,4 +11,6 @@ Now run `npm run start`
 
 Your server should now be up and running on your `http://localhost:9099`
 
+API documentation is available at `http://localhost:9099/api-docs`
+
 For any questions please contact Max van de Laar (Head of Development @ UTURN) via m.vandelaar@uturn-now.com

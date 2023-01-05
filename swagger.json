@@ -16,6 +16,8 @@
   "servers": [
     {
       "url": "http://localhost:9099"
+    }, {
+      "url": "https://fe-assignment-price-calc-server-production.up.railway.app/"
     }
   ],
   "paths": {
