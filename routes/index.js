@@ -12,7 +12,7 @@ router.get('/shipment-types', (req, res) => {
   res.json(types)
 })
 
-router.get('/download-logo', function(req, res){
+router.get('/download-resources', function(req, res){
   const file = `${__dirname}/../public/logo.svg`;
   res.download(file); // Set disposition and send it.
 });
