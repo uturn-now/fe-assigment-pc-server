@@ -13,11 +13,10 @@
     "description": "Go to the assignment",
     "url": "http://uturn-now.com"
   },
-  "servers": [
-    {
-      "url": "http://localhost:9099"
+  "servers": [{
+      "url": "https://fe-assigment-pc-server-production.up.railway.app"
     }, {
-      "url": "https://fe-assignment-price-calc-server-production.up.railway.app/"
+      "url": "http://localhost:9099"
     }
   ],
   "paths": {
